@@ -121,7 +121,7 @@
   };
 
   debug = (function() {
-    if (getParameter('debug') == 'true') {
+    if (getParameter('debug') != 'true') {
       return function() { };
     }
 
