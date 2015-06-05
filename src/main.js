@@ -78,12 +78,11 @@
 
   setup = function() {
     
-    var referrer = (document.referrer || document.location.href);
-    
-    var content = getParameter('content'),
+    var referrer  = (document.referrer || document.location.href), 
+         content  = getParameter('content'),
         scrolling = getParameter('scrolling') || 'no',
-        height = +getParameter('height'),
-        width = +getParameter('width');
+        height    = +getParameter('height'),
+        width     = +getParameter('width');
         
     debug('setup', 'content', content);
     debug('setup', 'referrer', referrer);
