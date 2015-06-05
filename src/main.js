@@ -79,11 +79,14 @@
   setup = function() {
     
     var referrer  = (document.referrer || document.location.href), 
+        hash      = window.location.hash, 
+        hash      = ((hash.charAt(0) == '#') ? (hash) : ('#' + hash)), 
          content  = getParameter('content'),
         scrolling = getParameter('scrolling') || 'no',
         height    = +getParameter('height'),
         width     = +getParameter('width');
         
+    debug('setup', 'hash', hash);
     debug('setup', 'content', content);
     debug('setup', 'referrer', referrer);
     debug('setup', 'height', height);
@@ -105,7 +108,7 @@
     embed = document.createElement('iframe');
     size = width;
 
-    embed.setAttribute('src', content + '?referrer=' + encodeURI(referrer));
+    embed.setAttribute('src', content + hash + '?referrer=' + encodeURI(referrer));
     embed.setAttribute('width', width);
     embed.setAttribute('height', height);
     embed.setAttribute('scrolling', scrolling);
@@ -118,7 +121,7 @@
   };
 
   debug = (function() {
-    if (getParameter('debug') != 'true') {
+    if (getParameter('debug') == 'true') {
       return function() { };
     }
 
